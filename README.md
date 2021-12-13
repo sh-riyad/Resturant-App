@@ -3,10 +3,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define n endl
+
 int TotalFood = 0, TotalEmployee = 0, TotalOrder = 0, TotalAmount = 0;
 bool EmployeeFlag = false, UserFlag = false;
 vector<pair<int, int>> CoustomerOrder;
 string username, password;
+
 class Menu
 {
 public:
@@ -14,6 +16,8 @@ public:
     string FoodName;
     int FoodPrice;
 };
+class Menu menu[100];
+
 class Employee
 {
 public:
@@ -25,7 +29,6 @@ public:
     string EmployeeDateofBirth;
     string EmployeePassword;
 };
-class Menu menu[100];
 class Employee employee[100];
 
 void ReadEmployeeDataFromFile()
@@ -44,6 +47,7 @@ void ReadEmployeeDataFromFile()
     else
         cout << "Unable to Open Employee Database.\n";
 }
+
 void ShowEmployeeData()
 {
     if (TotalEmployee == 0)
@@ -73,11 +77,13 @@ void ReadMenuFromFile()
     else
         cout << "Unable to open Menu" << n;
 }
+
 bool VerifyEmployee()
 {
     for (int j = 0; j < TotalEmployee; j++)
         return (employee[j].EmployeeName == username && employee[j].EmployeePassword == password);
 }
+
 void ShowMenu()
 {
     if (TotalFood == 0)
@@ -97,6 +103,7 @@ void ShowMenu()
         }
     }
 }
+
 void OrderSummary()
 {
     if (TotalOrder == 0)
@@ -127,6 +134,7 @@ void OrderSummary()
         }
     }
 }
+
 void OrderList()
 {
     if (TotalOrder > 0)
@@ -154,6 +162,7 @@ void OrderList()
     UserFlag = true;
     OrderSummary();
 }
+
 void UserAccess()
 {
     ShowMenu();
@@ -169,6 +178,7 @@ void UserAccess()
         OrderList();
     }
 }
+	
 void EmployeeAccess()
 {
     int Choice;
@@ -207,6 +217,7 @@ void EmployeeAccess()
         cout << "Wrong Login Information\n"
              << n;
 }
+	
 int main()
 {
     ReadEmployeeDataFromFile();
